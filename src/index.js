@@ -11,6 +11,7 @@ import thunk from "redux-thunk";
 
 import reducer from './reducers/index';
 
+
 const store = createStore(reducer, composeWithDevTools(applyMiddleware(logger,thunk)));
 
 ReactDOM.render(
