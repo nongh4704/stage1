@@ -1,6 +1,6 @@
 import React, {useState} from "react";
 
-const SignupForm = () => {
+const SignupForm = (props) => {
     const [phone, setPhone] = useState();
     const [email, setEmail] = useState();
     const [password, setPassword] = useState();
@@ -23,6 +23,12 @@ const SignupForm = () => {
     const onSubmit = (e) =>{
         e.preventDefault();
         console.log(phone, email, password, passwordConfirmation);
+        props.sendSignupRequest({
+            phone,
+            email,
+            password,
+            passwordConfirmation
+        });
     }
 
     return(
@@ -32,7 +38,7 @@ const SignupForm = () => {
                 <label>手机号</label>
                 <input
                     type = "numeric"
-                    class = "form-control"
+                    className = "form-control"
                     name = "phone"
                     onChange = {onChange}/>
             </div>
@@ -40,7 +46,7 @@ const SignupForm = () => {
                 <label>邮箱</label>
                 <input
                     type = "email"
-                    class = "form-control"
+                    className = "form-control"
                     name = "email"
                     onChange = {onChange}/>
             </div>
@@ -48,7 +54,7 @@ const SignupForm = () => {
                 <label>密码</label>
                 <input
                     type = "password"
-                    class = "form-control"
+                    className = "form-control"
                     name = "password"
                     onChange = {onChange}/>
             </div>
@@ -56,7 +62,7 @@ const SignupForm = () => {
                 <label>确认密码</label>
                 <input
                     type = "password"
-                    class = "form-control"
+                    className = "form-control"
                     name = "passwordConfirmation"
                     onChange = {onChange}/>
             </div>
