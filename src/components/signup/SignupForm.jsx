@@ -1,21 +1,40 @@
 import React, {useState} from "react";
 
 const SignupForm = () => {
-    const [] = useState();
+    const [phone, setPhone] = useState();
+    const [email, setEmail] = useState();
+    const [password, setPassword] = useState();
+    const [passwordConfirmation, setPasswordConfirmation] = useState();
 
     const onChange = (e) => {
-        
+        switch(e.target.name){
+            case "phone": setPhone(e.target.value);
+                break;
+            case "email": setEmail(e.target.value);
+                break;
+            case "password": setPassword(e.target.value);
+                break;
+            case "passwordConfirmation": setPasswordConfirmation(e.target.value);
+                break;
+            default: break;
+        }
+    }
+
+    const onSubmit = (e) =>{
+        e.preventDefault();
+        console.log(phone, email, password, passwordConfirmation);
     }
 
     return(
-        <form>
+        <form onSubmit = {onSubmit}>
+            <h1>Join our community</h1>
             <div className = "form-group">
                 <label>手机号</label>
                 <input
                     type = "numeric"
                     class = "form-control"
                     name = "phone"
-                    onChange = {this.onChange}/>
+                    onChange = {onChange}/>
             </div>
             <div className = "form-group">
                 <label>邮箱</label>
@@ -23,7 +42,7 @@ const SignupForm = () => {
                     type = "email"
                     class = "form-control"
                     name = "email"
-                    onChange = {this.onChange}/>
+                    onChange = {onChange}/>
             </div>
             <div className = "form-group">
                 <label>密码</label>
@@ -31,15 +50,18 @@ const SignupForm = () => {
                     type = "password"
                     class = "form-control"
                     name = "password"
-                    onChange = {this.onChange}/>
+                    onChange = {onChange}/>
             </div>
             <div className = "form-group">
                 <label>确认密码</label>
                 <input
                     type = "password"
                     class = "form-control"
-                    name = "passwordConfirm"
-                    onChange = {this.onChange}/>
+                    name = "passwordConfirmation"
+                    onChange = {onChange}/>
+            </div>
+            <div className = "form-group">
+                <button className = "btn btn-primary btn-lg">注册</button>
             </div>
         </form>
     )
