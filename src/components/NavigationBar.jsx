@@ -10,16 +10,16 @@ const NavigationBar  = () => {
             <nav className = "navbar navbar-expand-lg navbar-light bg-light">
                 <div className = "collapse navbar-collapse" id = "navbarSupportedContent">
                     <ul className = "navbar-nav mr-auto">
-                        <li className = "nav-item"><NavLink className = "nav-link" to = {`${match.path}/`}>登录</NavLink></li>
-                        <li className = "nav-item"><NavLink className = "nav-link" to = {`${match.path}/signup`}>注册</NavLink></li>
+                        <li className = "nav-item"><NavLink className = "nav-link" to = {`${match.url}/`}>登录</NavLink></li>
+                        <li className = "nav-item"><NavLink className = "nav-link" to = {`${match.url}/signup`}>注册</NavLink></li>
                     </ul>
                 </div>
             </nav>
             <Switch>
-                <Route path={`${match.url}/signup`}>
+                <Route path={`${match.path}/signup`}>
                     <Signup/>
                 </Route>
-                <Route path={`${match.url}`}>
+                <Route path={`${match.path}`}>
                     <Home/>
                 </Route>
             </Switch>
