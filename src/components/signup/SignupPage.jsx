@@ -9,7 +9,9 @@ const SignupPage = (props) => {
         <div className = "row">
             <div className = "col-md-3"></div>
             <div className = "col-md-6">
-                <SignupForm sendSignupRequest = {props.signupRequest}/>
+                <SignupForm 
+                    sendSignupRequest = {props.signupRequest}
+                    signup = {props.signup}/>
             </div>
             <div className = "col-md-3"></div>
         </div>
@@ -17,7 +19,13 @@ const SignupPage = (props) => {
 }
 
 const mapDispatchToProps = (dispatch) => {
-    return( bindActionCreators({signupRequest}, dispatch));
+    return bindActionCreators({signupRequest}, dispatch);
 }
 
-export default connect(null, mapDispatchToProps)(SignupPage);
+const mapStateToProps = (state) => {
+    return {
+        signup: state.signup
+    };
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(SignupPage);

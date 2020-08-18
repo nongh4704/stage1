@@ -1,10 +1,11 @@
-import React from "react";
+import React, { useEffect } from "react";
 import {NavLink, Route, Switch, useRouteMatch} from "react-router-dom";
 import Home from "./home";
 import Signup from "./signup/SignupPage";
 
 const NavigationBar  = () => {
     const match = useRouteMatch();
+
     return(
         <div>
             <nav className = "navbar navbar-expand-lg navbar-light bg-light">

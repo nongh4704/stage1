@@ -1,8 +1,8 @@
-const auth = (state, action) => {
-    switch(action.type){
-        default:
-            return state;
-    }
-}
+import {combineReducers} from "redux";
+import signup from "./signupReducer";
 
-export default auth;
+const rootReducers = combineReducers({
+    signup
+});
+
+export default rootReducers;
