@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React from "react";
 import {NavLink, Route, Switch, useRouteMatch} from "react-router-dom";
 import Home from "./home";
 import Signup from "./signup/SignupPage";
