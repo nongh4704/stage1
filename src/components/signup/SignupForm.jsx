@@ -1,11 +1,14 @@
 import React, {useState} from "react";
 import classNames from "classnames";
+import {withRouter} from "react-router-dom";
 
 const SignupForm = (props) => {
-    const [phone, setPhone] = useState();
-    const [email, setEmail] = useState();
-    const [password, setPassword] = useState();
-    const [passwordConfirmation, setPasswordConfirmation] = useState();
+    const [phone, setPhone] = useState("");
+    const [email, setEmail] = useState("");
+    const [password, setPassword] = useState("");
+    const [passwordConfirmation, setPasswordConfirmation] = useState("");
+    const [isLoading, setIsLoading] = useState(false);
+    const [errors, setErrors] = useState({});
 
     const onChange = (e) => {
         switch(e.target.name){
@@ -24,17 +27,24 @@ const SignupForm = (props) => {
     const onSubmit = (e) =>{
         e.preventDefault();
         console.log(phone, email, password, passwordConfirmation);
+        setIsLoading(true);
+        setErrors({});
         props.sendSignupRequest({
             phone,
             email,
             password,
             passwordConfirmation
-        });
+        })
+        .then(res => {
+            setIsLoading(false);
+            props.history.push("/login");
+        })
+        .catch(err => {
+            setIsLoading(false);
+            setErrors(err?.response?.data?.msg);
+            console.log("err==",err);
+        })
     }
-
-    let errors = props.signup.errors || {};
-    let isLoading = props.signup.isLoading;
-    console.log("isloaing",isLoading);
 
     return(
         <form onSubmit = {onSubmit}>
@@ -82,4 +92,4 @@ const SignupForm = (props) => {
     )
 }
 
-export default SignupForm;
+export default withRouter(SignupForm);
