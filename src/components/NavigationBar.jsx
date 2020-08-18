@@ -2,6 +2,7 @@ import React from "react";
 import {NavLink, Route, Switch, useRouteMatch} from "react-router-dom";
 import Home from "./home";
 import Signup from "./signup/SignupPage";
+import FlashMessageList from "../components/flashMessage/flashMessageList";
 
 const NavigationBar  = () => {
     const match = useRouteMatch();
@@ -16,14 +17,18 @@ const NavigationBar  = () => {
                     </ul>
                 </div>
             </nav>
-            <Switch>
-                <Route path={`${match.path}/signup`}>
-                    <Signup/>
-                </Route>
-                <Route path={`${match.path}`}>
-                    <Home/>
-                </Route>
-            </Switch>
+            
+            <FlashMessageList/>
+            <div className = "container">
+                <Switch>
+                    <Route path={`${match.path}/signup`}>
+                        <Signup/>
+                    </Route>
+                    <Route path={`${match.path}`}>
+                        <Home/>
+                    </Route>
+                </Switch>
+            </div>
         </div>
     )
 }

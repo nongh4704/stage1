@@ -38,10 +38,19 @@ const SignupForm = (props) => {
         .then(res => {
             setIsLoading(false);
             props.history.push("/login");
+            props.addFlashMessage({
+                type: "success",
+                message: "注册成功。"
+            });
+            
         })
         .catch(err => {
             setIsLoading(false);
             setErrors(err?.response?.data?.msg);
+            props.addFlashMessage({
+                type: "failed",
+                message: "注册失败。"
+            });
             console.log("err==",err);
         })
     }
