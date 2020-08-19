@@ -55,6 +55,25 @@ const SignupForm = (props) => {
         })
     }
 
+    const onBlur = (e) => {
+        let value = e.target.value;
+        if(value){
+            props.checkPhone(e.target.value)
+            .then(res => {
+                console.log("check phone==",res.data);
+                if(res.data && res.data.length){
+                    setErrors({phone: "该账号已存在，无法注册"});
+                }else{
+                    setErrors({});
+                }
+            })
+            .catch(err => {
+                setErrors({});
+                console.log(err);
+            })
+        }
+    }
+
     return(
         <form onSubmit = {onSubmit}>
             <h1>Join our community</h1>
@@ -64,6 +83,7 @@ const SignupForm = (props) => {
                     type = "numeric"
                     className = {classNames(["form-control", {"is-invalid": errors.phone}])}
                     name = "phone"
+                    onBlur = {onBlur}
                     onChange = {onChange}/>
                 {errors.phone ? <span className = "invalid-feedback">{errors.phone}</span> : null}
             </div>

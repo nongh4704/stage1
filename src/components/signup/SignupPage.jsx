@@ -2,7 +2,7 @@ import React from "react";
 import SignupForm from "./SignupForm";
 import {connect} from "react-redux";
 import {bindActionCreators} from "redux";
-import { signupRequest } from "../../actions/signupActions";
+import { signupRequest, checkPhone } from "../../actions/signupActions";
 import { addFlashMessage } from "../../actions/flashMessage";
 
 const SignupPage = (props) => {
@@ -13,6 +13,7 @@ const SignupPage = (props) => {
                 <SignupForm 
                     sendSignupRequest = {props.signupRequest}
                     addFlashMessage = {props.addFlashMessage}
+                    checkPhone = {props.checkPhone}
                     signup = {props.signup}/>
             </div>
             <div className = "col-md-3"></div>
@@ -21,7 +22,7 @@ const SignupPage = (props) => {
 }
 
 const mapDispatchToProps = (dispatch) => {
-    return bindActionCreators({signupRequest, addFlashMessage}, dispatch);
+    return bindActionCreators({signupRequest, addFlashMessage, checkPhone}, dispatch);
 }
 
 const mapStateToProps = (state) => {
