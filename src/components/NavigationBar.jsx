@@ -1,6 +1,6 @@
-import React, { useEffect } from "react";
+import React from "react";
 import {NavLink, Route, Switch, useRouteMatch, Redirect} from "react-router-dom";
-import Home from "./home";
+import Login from "../login/LoginPage";
 import Signup from "./signup/SignupPage";
 import FlashMessageList from "../components/flashMessage/flashMessageList";
 
@@ -26,7 +26,7 @@ const NavigationBar  = () => {
                         <Signup/>
                     </Route>
                     <Route path={`${match.path}`}>
-                        <Home/>
+                        <Login/>
                     </Route>
                 </Switch>
             </div>
