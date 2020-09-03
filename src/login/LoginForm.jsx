@@ -1,4 +1,5 @@
 import React, {useState} from "react";
+import {loginApi} from "../api";
 
 const LoginForm = () => {
     const [phone, setPhone] = useState("");
@@ -8,12 +9,29 @@ const LoginForm = () => {
         let name = e.target.name;
         
         if(name === "phone"){
-
+            setPhone(e.target.value);
+        }else if(name === "password"){
+            setPassword(e.target.value);
         }
     }
 
+    const onSubmit = () =>{
+        if(!phone){
+            alert("请输入手机号");
+            return;
+        }
+        if(!password){
+            alert("请输入密码");
+            return;
+        }
+    
+        loginApi.loginRequest({phone, password})
+        .then(res => res.json())
+        .then(res =>{})    
+    }
+
     return(
-        <form>
+        <form onSubmit = {onSubmit}>
             <h1>Login</h1>
             <div className="form-group">
                 <label>手机号</label>
