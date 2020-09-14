@@ -1,5 +1,5 @@
-import loginApi from "./loginApi";
+import * as loginApi from "./loginApi";
 
-exports = {
+export {
     loginApi
 };

@@ -1,9 +1,9 @@
 import axios from "axios";
 
 const loginRequest = (data) =>{
-    return axios.post("/api/login", data);
+    return axios.post("/api/auth", data);
 }
 
-exports = {
+export {
     loginRequest
 };

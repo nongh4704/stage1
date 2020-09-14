@@ -15,7 +15,8 @@ const LoginForm = () => {
         }
     }
 
-    const onSubmit = () =>{
+    const onSubmit = (e) =>{
+        e.preventDefault();
         if(!phone){
             alert("请输入手机号");
             return;
@@ -27,7 +28,10 @@ const LoginForm = () => {
     
         loginApi.loginRequest({phone, password})
         .then(res => res.json())
-        .then(res =>{})    
+        .then(res =>{})
+        .catch(err => {
+            console.log(err);
+        })
     }
 
     return(
@@ -45,7 +49,7 @@ const LoginForm = () => {
                 <label>密码</label>
                 <input
                     type="password"
-                    name="passowrd"
+                    name="password"
                     className="form-control"
                     onChange={onChange}/>
             </div>
